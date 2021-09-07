@@ -9,17 +9,18 @@
 <meta content="Nebula Graph" name="author"/>
 <link href="https://docs.nebula-graph.io/master/5.configurations-and-logs/1.configurations/3.graph-config/" rel="canonical"/>
 <link href="../../../assets/images/favicon.ico" rel="icon"/>
-<meta content="mkdocs-1.1, mkdocs-material-7.1.8" name="generator"/>
+<meta content="mkdocs-1.2.2, mkdocs-material-7.2.6" name="generator"/>
 <title>Graph Service configurations - Nebula Graph Database Manual</title>
-<link href="../../../assets/stylesheets/main.ca7ac06f.min.css" rel="stylesheet"/>
-<link href="../../../assets/stylesheets/palette.f1a3b89f.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/main.802231af.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/palette.3f5d1f46.min.css" rel="stylesheet"/>
 <meta content="#009485" name="theme-color"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&amp;display=fallback" rel="stylesheet"/>
 <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
 <link href="../../../stylesheets/logo.css" rel="stylesheet"/>
+<link href="../../../stylesheets/note.css" rel="stylesheet"/>
 <link href="../../../css/version-select.css" rel="stylesheet"/>
-<link href="../../../css/search.css" rel="stylesheet"/>
+<link href="../../../stylesheets/extra.css" rel="stylesheet"/>
 <script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-60523578-16","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){var e;this.value&&(e=document.location.pathname,ga("send","pageview",e+"?q="+this.value))}),"undefined"!=typeof location$&&location$.subscribe(function(e){ga("send","pageview",e.pathname)})})</script>
 <script async="" src="https://www.google-analytics.com/analytics.js"></script>
 </head>
@@ -36,9 +37,10 @@
 <div data-md-component="announce">
 </div>
 <header class="md-header" data-md-component="header">
+<div id="dialog-bg"></div>
 <div id="banner" style="width: 100%;display:flex;height: 35px;justify-content:center;align-items:center;background-color:#FFE45E;font-size:15px;font-weight: 400;color: #000000;">
     This version is under development. For the docs of the latest stable release, see 
-    <a href="https://docs.nebula-graph.io/2.0.1/" style="font-weight: 400;text-decoration:underline;margin-left: 5px;color: #000000;"> v2.0.1 docs</a>.
+    <a href="https://docs.nebula-graph.io/" style="font-weight: 400;text-decoration:underline;margin-left: 5px;color: #000000;"> docs</a>.
     <a id="delete" style="margin-left: 20px;cursor: pointer;">✖</a>
 </div>
 <nav aria-label="Header" class="md-header__inner md-grid">
@@ -67,7 +69,32 @@
 <label class="md-header__button md-icon" for="__search">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
 </label>
-<div class="widget-search widget" id="google-search">
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div class="md-header__source">
 <a class="md-source" data-md-component="source" href="https://github.com/vesoft-inc/nebula-docs/" title="Go to repository">
@@ -113,18 +140,23 @@
 </div>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
+<a class="md-nav__link" href="../../../pdf/NebulaGraph-EN.pdf">
+        PDF
+      </a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="../../..">
         About
       </a>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3">
         Introduction
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Introduction" class="md-nav" data-md-level="1">
-<label class="md-nav__title" for="__nav_2">
+<label class="md-nav__title" for="__nav_3">
 <span class="md-nav__icon md-icon"></span>
           Introduction
         </label>
@@ -136,17 +168,27 @@
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../../1.introduction/2.data-model/">
-        Date model
+        Data model
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../1.introduction/2.1.path/">
+        Path
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../1.introduction/3.vid/">
+        VID
       </a>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" id="__nav_2_3" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_3">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5" id="__nav_3_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_5">
         Nebula Graph architecture
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Nebula Graph architecture" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_2_3">
+<label class="md-nav__title" for="__nav_3_5">
 <span class="md-nav__icon md-icon"></span>
           Nebula Graph architecture
         </label>
@@ -178,13 +220,13 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" id="__nav_3" type="checkbox"/>
-<label class="md-nav__link" for="__nav_3">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4">
         Quick start
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Quick start" class="md-nav" data-md-level="1">
-<label class="md-nav__title" for="__nav_3">
+<label class="md-nav__title" for="__nav_4">
 <span class="md-nav__icon md-icon"></span>
           Quick start
         </label>
@@ -195,48 +237,48 @@
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../../2.quick-start/2.deploy-nebula-graph-with-docker-compose/">
-        Deploy Nebula Graph with Docker Compose
+<a class="md-nav__link" href="../../../2.quick-start/2.install-nebula-graph/">
+        Step 1 Install Nebula Graph
       </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../../2.quick-start/5.start-stop-service/">
-        Manage Nebula Graph services
+        Step 2 Manage Nebula Graph Service
       </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../../2.quick-start/3.connect-to-nebula-graph/">
-        Connect to Nebula Graph
+        Step 3 Connect to Nebula Graph
       </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../../2.quick-start/4.nebula-graph-crud/">
-        Nebula Graph CRUD
+        Step 4 Use nGQL (CRUD)
       </a>
 </li>
 </ul>
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" id="__nav_4" type="checkbox"/>
-<label class="md-nav__link" for="__nav_4">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5">
         nGQL guide
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="nGQL guide" class="md-nav" data-md-level="1">
-<label class="md-nav__title" for="__nav_4">
+<label class="md-nav__title" for="__nav_5">
 <span class="md-nav__icon md-icon"></span>
           nGQL guide
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1" id="__nav_4_1" type="checkbox"/>
-<label class="md-nav__link" for="__nav_4_1">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_1" id="__nav_5_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_1">
         nGQL overview
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="nGQL overview" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_4_1">
+<label class="md-nav__title" for="__nav_5_1">
 <span class="md-nav__icon md-icon"></span>
           nGQL overview
         </label>
@@ -251,17 +293,37 @@
         Graph patterns
       </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../3.ngql-guide/1.nGQL-overview/comments/">
+        Comments
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../3.ngql-guide/1.nGQL-overview/identifier-case-sensitivity/">
+        Identifier case sensitivity
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../3.ngql-guide/1.nGQL-overview/keywords-and-reserved-words/">
+        Keywords
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../3.ngql-guide/1.nGQL-overview/ngql-style-guide/">
+        nGQL style guide
+      </a>
+</li>
 </ul>
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" id="__nav_4_2" type="checkbox"/>
-<label class="md-nav__link" for="__nav_4_2">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2" id="__nav_5_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_2">
         Data types
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Data types" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_4_2">
+<label class="md-nav__title" for="__nav_5_2">
 <span class="md-nav__icon md-icon"></span>
           Data types
         </label>
@@ -315,13 +377,13 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3" id="__nav_4_3" type="checkbox"/>
-<label class="md-nav__link" for="__nav_4_3">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3" id="__nav_5_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_3">
         Variables and composite queries
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Variables and composite queries" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_4_3">
+<label class="md-nav__title" for="__nav_5_3">
 <span class="md-nav__icon md-icon"></span>
           Variables and composite queries
         </label>
@@ -345,13 +407,13 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4" id="__nav_4_4" type="checkbox"/>
-<label class="md-nav__link" for="__nav_4_4">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_4" id="__nav_5_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_4">
         Operators
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Operators" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_4_4">
+<label class="md-nav__title" for="__nav_5_4">
 <span class="md-nav__icon md-icon"></span>
           Operators
         </label>
@@ -400,13 +462,13 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_5" id="__nav_4_5" type="checkbox"/>
-<label class="md-nav__link" for="__nav_4_5">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_5" id="__nav_5_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_5">
         Functions and expressions
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Functions and expressions" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_4_5">
+<label class="md-nav__title" for="__nav_5_5">
 <span class="md-nav__icon md-icon"></span>
           Functions and expressions
         </label>
@@ -475,13 +537,13 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_6" id="__nav_4_6" type="checkbox"/>
-<label class="md-nav__link" for="__nav_4_6">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_6" id="__nav_5_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_6">
         General queries statements
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="General queries statements" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_4_6">
+<label class="md-nav__title" for="__nav_5_6">
 <span class="md-nav__icon md-icon"></span>
           General queries statements
         </label>
@@ -512,13 +574,13 @@
       </a>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_6_6" id="__nav_4_6_6" type="checkbox"/>
-<label class="md-nav__link" for="__nav_4_6_6">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_6_6" id="__nav_5_6_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_6_6">
         SHOW
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="SHOW" class="md-nav" data-md-level="3">
-<label class="md-nav__title" for="__nav_4_6_6">
+<label class="md-nav__title" for="__nav_5_6_6">
 <span class="md-nav__icon md-icon"></span>
           SHOW
         </label>
@@ -593,6 +655,16 @@
         SHOW USERS
       </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../3.ngql-guide/7.general-query-statements/6.show/17.show-sessions/">
+        SHOW SESSIONS
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../3.ngql-guide/7.general-query-statements/6.show/18.show-queries/">
+        SHOW QUERIES
+      </a>
+</li>
 </ul>
 </nav>
 </li>
@@ -600,13 +672,13 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_7" id="__nav_4_7" type="checkbox"/>
-<label class="md-nav__link" for="__nav_4_7">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_7" id="__nav_5_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_7">
         Clauses and options
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Clauses and options" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_4_7">
+<label class="md-nav__title" for="__nav_5_7">
 <span class="md-nav__icon md-icon"></span>
           Clauses and options
         </label>
@@ -655,13 +727,13 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_8" id="__nav_4_8" type="checkbox"/>
-<label class="md-nav__link" for="__nav_4_8">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_8" id="__nav_5_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_8">
         Space statements
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Space statements" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_4_8">
+<label class="md-nav__title" for="__nav_5_8">
 <span class="md-nav__icon md-icon"></span>
           Space statements
         </label>
@@ -695,13 +767,13 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_9" id="__nav_4_9" type="checkbox"/>
-<label class="md-nav__link" for="__nav_4_9">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_9" id="__nav_5_9" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_9">
         Tag statements
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Tag statements" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_4_9">
+<label class="md-nav__title" for="__nav_5_9">
 <span class="md-nav__icon md-icon"></span>
           Tag statements
         </label>
@@ -735,13 +807,13 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_10" id="__nav_4_10" type="checkbox"/>
-<label class="md-nav__link" for="__nav_4_10">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_10" id="__nav_5_10" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_10">
         Edge type statements
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Edge type statements" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_4_10">
+<label class="md-nav__title" for="__nav_5_10">
 <span class="md-nav__icon md-icon"></span>
           Edge type statements
         </label>
@@ -775,13 +847,13 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_11" id="__nav_4_11" type="checkbox"/>
-<label class="md-nav__link" for="__nav_4_11">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_11" id="__nav_5_11" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_11">
         Vertex statements
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Vertex statements" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_4_11">
+<label class="md-nav__title" for="__nav_5_11">
 <span class="md-nav__icon md-icon"></span>
           Vertex statements
         </label>
@@ -810,13 +882,13 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_12" id="__nav_4_12" type="checkbox"/>
-<label class="md-nav__link" for="__nav_4_12">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_12" id="__nav_5_12" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_12">
         Edge statements
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Edge statements" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_4_12">
+<label class="md-nav__title" for="__nav_5_12">
 <span class="md-nav__icon md-icon"></span>
           Edge statements
         </label>
@@ -845,13 +917,13 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_13" id="__nav_4_13" type="checkbox"/>
-<label class="md-nav__link" for="__nav_4_13">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_13" id="__nav_5_13" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_13">
         Native index statements
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Native index statements" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_4_13">
+<label class="md-nav__title" for="__nav_5_13">
 <span class="md-nav__icon md-icon"></span>
           Native index statements
         </label>
@@ -900,22 +972,17 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_14" id="__nav_4_14" type="checkbox"/>
-<label class="md-nav__link" for="__nav_4_14">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_14" id="__nav_5_14" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_14">
         Full-text index statements
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Full-text index statements" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_4_14">
+<label class="md-nav__title" for="__nav_5_14">
 <span class="md-nav__icon md-icon"></span>
           Full-text index statements
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../../3.ngql-guide/14.native-index-statements/">
-        Index overview
-      </a>
-</li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../../4.deployment-and-installation/6.deploy-text-based-index/1.text-based-index-restrictions/">
         Full-text restrictions
@@ -940,13 +1007,13 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_15" id="__nav_4_15" type="checkbox"/>
-<label class="md-nav__link" for="__nav_4_15">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_15" id="__nav_5_15" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_15">
         Subgraph and path
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Subgraph and path" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_4_15">
+<label class="md-nav__title" for="__nav_5_15">
 <span class="md-nav__icon md-icon"></span>
           Subgraph and path
         </label>
@@ -965,13 +1032,13 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_16" id="__nav_4_16" type="checkbox"/>
-<label class="md-nav__link" for="__nav_4_16">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_16" id="__nav_5_16" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_16">
         Query tuning statements
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Query tuning statements" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_4_16">
+<label class="md-nav__title" for="__nav_5_16">
 <span class="md-nav__icon md-icon"></span>
           Query tuning statements
         </label>
@@ -985,13 +1052,13 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_17" id="__nav_4_17" type="checkbox"/>
-<label class="md-nav__link" for="__nav_4_17">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_17" id="__nav_5_17" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_17">
         Operation and maintenance statements
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Operation and maintenance statements" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_4_17">
+<label class="md-nav__title" for="__nav_5_17">
 <span class="md-nav__icon md-icon"></span>
           Operation and maintenance statements
         </label>
@@ -1006,6 +1073,11 @@
         Job statements
       </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../3.ngql-guide/18.operation-and-maintenance-statements/6.kill-query/">
+        Kill queries
+      </a>
+</li>
 </ul>
 </nav>
 </li>
@@ -1013,13 +1085,13 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" id="__nav_5" type="checkbox"/>
-<label class="md-nav__link" for="__nav_5">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" id="__nav_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6">
         Deployment and installation
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Deployment and installation" class="md-nav" data-md-level="1">
-<label class="md-nav__title" for="__nav_5">
+<label class="md-nav__title" for="__nav_6">
 <span class="md-nav__icon md-icon"></span>
           Deployment and installation
         </label>
@@ -1030,13 +1102,13 @@
       </a>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2" id="__nav_5_2" type="checkbox"/>
-<label class="md-nav__link" for="__nav_5_2">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_2" id="__nav_6_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_2">
         Compile and install Nebula Graph
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Compile and install Nebula Graph" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_5_2">
+<label class="md-nav__title" for="__nav_6_2">
 <span class="md-nav__icon md-icon"></span>
           Compile and install Nebula Graph
         </label>
@@ -1051,18 +1123,53 @@
         Install Nebula Graph with RPM or DEB package
       </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../4.deployment-and-installation/2.compile-and-install-nebula-graph/3.deploy-nebula-graph-with-docker-compose/">
+        Deploy Nebula Graph with Docker Compose
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../4.deployment-and-installation/2.compile-and-install-nebula-graph/deploy-nebula-graph-cluster/">
+        Deploy Nebula Graph cluster
+      </a>
+</li>
 </ul>
 </nav>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../../4.deployment-and-installation/deploy-nebula-graph-cluster/">
-        Deploy Nebula Graph cluster
+<a class="md-nav__link" href="../../../4.deployment-and-installation/manage-service/">
+        Manage Service
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../../4.deployment-and-installation/3.upgrade-nebula-graph/">
-        Upgrade Nebula Graph
+<a class="md-nav__link" href="../../../4.deployment-and-installation/connect-to-nebula-graph/">
+        Connect to Service
       </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_5" id="__nav_6_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_5">
+        Upgrade
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Upgrade" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_5">
+<span class="md-nav__icon md-icon"></span>
+          Upgrade
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../4.deployment-and-installation/3.upgrade-nebula-graph/upgrade-nebula-graph-to-250/">
+        Upgrade Nebula Graph to v2.5.0
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../4.deployment-and-installation/3.upgrade-nebula-graph/upgrade-nebula-from-200-to-250/">
+        Upgrade Nebula Graph from v2.0.x to v2.5.0
+      </a>
+</li>
+</ul>
+</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../../4.deployment-and-installation/4.uninstall-nebula-graph/">
@@ -1073,25 +1180,25 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" id="__nav_6" type="checkbox"/>
-<label class="md-nav__link" for="__nav_6">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" id="__nav_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7">
         Configurations and logs
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Configurations and logs" class="md-nav" data-md-level="1">
-<label class="md-nav__title" for="__nav_6">
+<label class="md-nav__title" for="__nav_7">
 <span class="md-nav__icon md-icon"></span>
           Configurations and logs
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_1" id="__nav_6_1" type="checkbox"/>
-<label class="md-nav__link" for="__nav_6_1">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_1" id="__nav_7_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7_1">
         Configurations
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Configurations" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_6_1">
+<label class="md-nav__title" for="__nav_7_1">
 <span class="md-nav__icon md-icon"></span>
           Configurations
         </label>
@@ -1132,13 +1239,18 @@
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#basic_configurations">
-    Basic configurations
+<a class="md-nav__link" href="#basics_configurations">
+    Basics configurations
   </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#logging_configurations">
     Logging configurations
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#query_configurations">
+    Query configurations
   </a>
 </li>
 <li class="md-nav__item">
@@ -1152,8 +1264,8 @@
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#authorization_and_authentication_configurations">
-    Authorization and authentication configurations
+<a class="md-nav__link" href="#authorization_configurations">
+    Authorization configurations
   </a>
 </li>
 </ul>
@@ -1173,13 +1285,13 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_2" id="__nav_6_2" type="checkbox"/>
-<label class="md-nav__link" for="__nav_6_2">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_2" id="__nav_7_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7_2">
         Log management
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Log management" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_6_2">
+<label class="md-nav__title" for="__nav_7_2">
 <span class="md-nav__icon md-icon"></span>
           Log management
         </label>
@@ -1196,13 +1308,13 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" id="__nav_7" type="checkbox"/>
-<label class="md-nav__link" for="__nav_7">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" id="__nav_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_8">
         Monitor and metrics
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Monitor and metrics" class="md-nav" data-md-level="1">
-<label class="md-nav__title" for="__nav_7">
+<label class="md-nav__title" for="__nav_8">
 <span class="md-nav__icon md-icon"></span>
           Monitor and metrics
         </label>
@@ -1216,25 +1328,25 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" id="__nav_8" type="checkbox"/>
-<label class="md-nav__link" for="__nav_8">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" id="__nav_9" type="checkbox"/>
+<label class="md-nav__link" for="__nav_9">
         Data security
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Data security" class="md-nav" data-md-level="1">
-<label class="md-nav__title" for="__nav_8">
+<label class="md-nav__title" for="__nav_9">
 <span class="md-nav__icon md-icon"></span>
           Data security
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_1" id="__nav_8_1" type="checkbox"/>
-<label class="md-nav__link" for="__nav_8_1">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9_1" id="__nav_9_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_9_1">
         Authentication and authorization
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Authentication and authorization" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_8_1">
+<label class="md-nav__title" for="__nav_9_1">
 <span class="md-nav__icon md-icon"></span>
           Authentication and authorization
         </label>
@@ -1266,13 +1378,13 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" id="__nav_9" type="checkbox"/>
-<label class="md-nav__link" for="__nav_9">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" id="__nav_10" type="checkbox"/>
+<label class="md-nav__link" for="__nav_10">
         Service Tuning
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Service Tuning" class="md-nav" data-md-level="1">
-<label class="md-nav__title" for="__nav_9">
+<label class="md-nav__title" for="__nav_10">
 <span class="md-nav__icon md-icon"></span>
           Service Tuning
         </label>
@@ -1287,8 +1399,628 @@
         Storage load balance
       </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../8.service-tuning/2.graph-modeling/">
+        Modeling suggestions
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../8.service-tuning/3.system-design/">
+        System design suggestions
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../8.service-tuning/4.plan/">
+        Execution plan
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../8.service-tuning/super-node/">
+        Processing super vertices
+      </a>
+</li>
 </ul>
 </nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11" id="__nav_11" type="checkbox"/>
+<label class="md-nav__link" for="__nav_11">
+        Client
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Client" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_11">
+<span class="md-nav__icon md-icon"></span>
+          Client
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../14.client/1.nebula-client/">
+        Clients overview
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../14.client/3.nebula-cpp-client/">
+        Nebula CPP
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../14.client/4.nebula-java-client/">
+        Nebula Java
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../14.client/5.nebula-python-client/">
+        Nebula Python
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../14.client/6.nebula-go-client/">
+        Nebula Go
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12" id="__nav_12" type="checkbox"/>
+<label class="md-nav__link" for="__nav_12">
+        Nebula Graph Studio
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Nebula Graph Studio" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_12">
+<span class="md-nav__icon md-icon"></span>
+          Nebula Graph Studio
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../nebula-studio/about-studio/st-ug-release-note/">
+        Change Log
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12_2" id="__nav_12_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_12_2">
+        About Nebula Graph Studio
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="About Nebula Graph Studio" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_12_2">
+<span class="md-nav__icon md-icon"></span>
+          About Nebula Graph Studio
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../nebula-studio/about-studio/st-ug-what-is-graph-studio/">
+        What is Nebula Graph Studio
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../nebula-studio/about-studio/st-ug-terms/">
+        Explanations of terms
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../nebula-studio/about-studio/st-ug-limitations/">
+        Limitations
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../nebula-studio/about-studio/st-ug-check-updates/">
+        Check updates
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../nebula-studio/about-studio/st-ug-shortcuts/">
+        Shortcuts
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12_3" id="__nav_12_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_12_3">
+        Deploy and connect
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Deploy and connect" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_12_3">
+<span class="md-nav__icon md-icon"></span>
+          Deploy and connect
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../nebula-studio/deploy-connect/st-ug-deploy/">
+        Deploy Studio
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../nebula-studio/deploy-connect/st-ug-connect/">
+        Connect to Nebula Graph
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../nebula-studio/deploy-connect/st-ug-reset-connection/">
+        Clear connection
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12_4" id="__nav_12_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_12_4">
+        Quick start
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Quick start" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_12_4">
+<span class="md-nav__icon md-icon"></span>
+          Quick start
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../nebula-studio/quick-start/st-ug-plan-schema/">
+        Design a schema
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../nebula-studio/quick-start/st-ug-create-schema/">
+        Create a schema
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../nebula-studio/quick-start/st-ug-import-data/">
+        Import data
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../nebula-studio/quick-start/st-ug-explore/">
+        Query graph data
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12_5" id="__nav_12_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_12_5">
+        Operation guide
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Operation guide" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_12_5">
+<span class="md-nav__icon md-icon"></span>
+          Operation guide
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12_5_1" id="__nav_12_5_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_12_5_1">
+        Use Schema
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Use Schema" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_12_5_1">
+<span class="md-nav__icon md-icon"></span>
+          Use Schema
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../nebula-studio/manage-schema/st-ug-crud-space/">
+        Operate graph spaces
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../nebula-studio/manage-schema/st-ug-crud-tag/">
+        Operate Tags
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../nebula-studio/manage-schema/st-ug-crud-edge-type/">
+        Operate Edge types
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../nebula-studio/manage-schema/st-ug-crud-index/">
+        Operate Indexes
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12_5_2" id="__nav_12_5_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_12_5_2">
+        Use Console
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Use Console" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_12_5_2">
+<span class="md-nav__icon md-icon"></span>
+          Use Console
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../nebula-studio/use-console/st-ug-console/">
+        Console
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../nebula-studio/use-console/st-ug-open-in-explore/">
+        Open in Explore
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../nebula-studio/use-console/st-ug-visualize-subgraph/">
+        View subgraphs
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12_6" id="__nav_12_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_12_6">
+        Troubleshooting
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Troubleshooting" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_12_6">
+<span class="md-nav__icon md-icon"></span>
+          Troubleshooting
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../nebula-studio/troubleshooting/st-ug-config-server-errors/">
+        Connecting to the database error
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../nebula-studio/troubleshooting/st-ug-connection-errors/">
+        Cannot access to Studio
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../nebula-studio/troubleshooting/st-ug-faq/">
+        FAQ
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13" id="__nav_13" type="checkbox"/>
+<label class="md-nav__link" for="__nav_13">
+        Nebula Graph Dashboard
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Nebula Graph Dashboard" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_13">
+<span class="md-nav__icon md-icon"></span>
+          Nebula Graph Dashboard
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../nebula-dashboard/1.what-is-dashboard/">
+        What is Nebula Graph Dashboard
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../nebula-dashboard/2.deploy-dashboard/">
+        Deploy Dashboard
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../nebula-dashboard/3.connect-dashboard/">
+        Connect Dashboard
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../nebula-dashboard/4.use-dashboard/">
+        Use Dashboard
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../nebula-dashboard/6.monitor-parameter/">
+        Monitor Parameter
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_14" id="__nav_14" type="checkbox"/>
+<label class="md-nav__link" for="__nav_14">
+        Nebula Graph Explorer
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Nebula Graph Explorer" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_14">
+<span class="md-nav__icon md-icon"></span>
+          Nebula Graph Explorer
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../nebula-explorer/about-explorer/ex-ug-what-is-explorer/">
+        What is Nebula Graph Explorer
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_14_2" id="__nav_14_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_14_2">
+        Deploy and connect
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Deploy and connect" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_14_2">
+<span class="md-nav__icon md-icon"></span>
+          Deploy and connect
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../nebula-explorer/deploy-connect/ex-ug-deploy/">
+        Deploy Explorer
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../nebula-explorer/deploy-connect/ex-ug-connect/">
+        Connect to Nebula Graph
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../nebula-explorer/deploy-connect/ex-ug-reset-connection/">
+        Reset connection
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_14_3" id="__nav_14_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_14_3">
+        Operation guide
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Operation guide" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_14_3">
+<span class="md-nav__icon md-icon"></span>
+          Operation guide
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../nebula-explorer/operation-guide/ex-ug-page-overview/">
+        Page Overview
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../nebula-explorer/operation-guide/ex-ug-query-exploration/">
+        Start query
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../nebula-explorer/operation-guide/ex-ug-graph-exploration/">
+        Graph exploration and expansion
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../nebula-explorer/operation-guide/ex-ug-canvas/">
+        Canvas operation
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../nebula-explorer/operation-guide/ex-ug-relationship-list/">
+        Relationship list
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../nebula-explorer/operation-guide/ex-ug-shortcuts/">
+        Shortcuts
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_15" id="__nav_15" type="checkbox"/>
+<label class="md-nav__link" for="__nav_15">
+        Nebula Importer
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Nebula Importer" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_15">
+<span class="md-nav__icon md-icon"></span>
+          Nebula Importer
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../nebula-importer/use-importer/">
+        Use Nebula Importer
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../nebula-importer/config-with-header/">
+        Configuration with Header
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../nebula-importer/config-without-header/">
+        Configuration without Header
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_16" id="__nav_16" type="checkbox"/>
+<label class="md-nav__link" for="__nav_16">
+        Nebula Exchange
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Nebula Exchange" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_16">
+<span class="md-nav__icon md-icon"></span>
+          Nebula Exchange
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_16_1" id="__nav_16_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_16_1">
+        Introduction
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Introduction" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_16_1">
+<span class="md-nav__icon md-icon"></span>
+          Introduction
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../nebula-exchange/about-exchange/ex-ug-what-is-exchange/">
+        What is Nebula Exchange
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../nebula-exchange/about-exchange/ex-ug-limitations/">
+        Limitations
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../nebula-exchange/ex-ug-compile/">
+        Compile Exchange
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_16_3" id="__nav_16_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_16_3">
+        Exchange configurations
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Exchange configurations" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_16_3">
+<span class="md-nav__icon md-icon"></span>
+          Exchange configurations
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../nebula-exchange/parameter-reference/ex-ug-para-import-command/">
+        Options for import
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../nebula-exchange/parameter-reference/ex-ug-parameter/">
+        Parameters in the configuration file
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_16_4" id="__nav_16_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_16_4">
+        Use Nebula Exchange
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Use Nebula Exchange" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_16_4">
+<span class="md-nav__icon md-icon"></span>
+          Use Nebula Exchange
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../nebula-exchange/use-exchange/ex-ug-import-from-csv/">
+        Import data from CSV files
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../nebula-exchange/use-exchange/ex-ug-import-from-json/">
+        Import data from JSON files
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../nebula-exchange/use-exchange/ex-ug-import-from-orc/">
+        Import data from ORC files
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../nebula-exchange/use-exchange/ex-ug-import-from-parquet/">
+        Import data from Parquet files
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../nebula-exchange/use-exchange/ex-ug-import-from-hbase/">
+        Import data from HBase
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../nebula-exchange/use-exchange/ex-ug-import-from-mysql/">
+        Import data from MySQL
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../nebula-exchange/use-exchange/ex-ug-import-from-clickhouse/">
+        Import data from ClickHouse
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../nebula-exchange/use-exchange/ex-ug-import-from-neo4j/">
+        Import data from Neo4j
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../nebula-exchange/use-exchange/ex-ug-import-from-hive/">
+        Import data from Hive
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../nebula-exchange/use-exchange/ex-ug-import-from-maxcompute/">
+        Import data from MaxCompute
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../nebula-exchange/use-exchange/ex-ug-import-from-pulsar/">
+        Import data from Pulsar
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../nebula-exchange/use-exchange/ex-ug-import-from-kafka/">
+        Import data from Kafka
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../nebula-exchange/use-exchange/ex-ug-import-from-sst/">
+        Import data from SST files
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../nebula-exchange/ex-ug-FAQ/">
+        Exchange FAQ
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../nebula-algorithm/">
+        Nebula Algorithm
+      </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../../nebula-spark-connector/">
@@ -1300,81 +2032,31 @@
         Nebula Flink Connector
       </a>
 </li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12" id="__nav_12" type="checkbox"/>
-<label class="md-nav__link" for="__nav_12">
-        Contribution
-        <span class="md-nav__icon md-icon"></span>
-</label>
-<nav aria-label="Contribution" class="md-nav" data-md-level="1">
-<label class="md-nav__title" for="__nav_12">
-<span class="md-nav__icon md-icon"></span>
-          Contribution
-        </label>
-<ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../../15.contribution/how-to-contribute/">
-        How to Contribute
+<a class="md-nav__link" href="../../../nebula-bench/">
+        Nebula Bench
       </a>
 </li>
-</ul>
-</nav>
-</li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13" id="__nav_13" type="checkbox"/>
-<label class="md-nav__link" for="__nav_13">
-        FAQ
-        <span class="md-nav__icon md-icon"></span>
-</label>
-<nav aria-label="FAQ" class="md-nav" data-md-level="1">
-<label class="md-nav__title" for="__nav_13">
-<span class="md-nav__icon md-icon"></span>
-          FAQ
-        </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../../19.FAQ/0.FAQ/">
-        FAQ
-      </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_14" id="__nav_14" type="checkbox"/>
-<label class="md-nav__link" for="__nav_14">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_21" id="__nav_21" type="checkbox"/>
+<label class="md-nav__link" for="__nav_21">
         Appendix
         <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Appendix" class="md-nav" data-md-level="1">
-<label class="md-nav__title" for="__nav_14">
+<label class="md-nav__title" for="__nav_21">
 <span class="md-nav__icon md-icon"></span>
           Appendix
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../../20.appendix/0.vid/">
-        VID
+<a class="md-nav__link" href="../../../20.appendix/releasenote/">
+        Release Note
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../../20.appendix/2.graph-modeling/">
-        Graph modeling
-      </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../../20.appendix/3.system-design/">
-        System modeling
-      </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../../20.appendix/4.raft/">
-        About Raft
-      </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../../20.appendix/5.partition/">
-        Partition ID
+<a class="md-nav__link" href="../../../20.appendix/0.FAQ/">
+        FAQ
       </a>
 </li>
 <li class="md-nav__item">
@@ -1383,18 +2065,13 @@
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../../20.appendix/comments/">
-        Comments
+<a class="md-nav__link" href="../../../20.appendix/write-tools/">
+        Write tools
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../../20.appendix/identifier-case-sensitivity/">
-        Case sensitivity
-      </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../../20.appendix/keywords-and-reserved-words/">
-        Keywords
+<a class="md-nav__link" href="../../../15.contribution/how-to-contribute/">
+        How to contribute
       </a>
 </li>
 </ul>
@@ -1403,11 +2080,6 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="https://docs.nebula-graph.com.cn/">
         中文手册
-      </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../../pdf/NebulaGraph-EN.pdf">
-        PDF
       </a>
 </li>
 </ul>
@@ -1435,13 +2107,18 @@
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#basic_configurations">
-    Basic configurations
+<a class="md-nav__link" href="#basics_configurations">
+    Basics configurations
   </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#logging_configurations">
     Logging configurations
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#query_configurations">
+    Query configurations
   </a>
 </li>
 <li class="md-nav__item">
@@ -1455,8 +2132,8 @@
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#authorization_and_authentication_configurations">
-    Authorization and authentication configurations
+<a class="md-nav__link" href="#authorization_configurations">
+    Authorization configurations
   </a>
 </li>
 </ul>
@@ -1470,24 +2147,26 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"></path></svg>
 </a>
 <h1 id="graph_service_configuration">Graph Service configuration<a class="headerlink" href="#graph_service_configuration" title="Permanent link">¶</a></h1>
-<p>Nebula Graph provides two initial configuration files for the Graph Service: <code>nebula-graphd.conf.default</code> and <code>nebula-graphd.conf.production</code>. You can use them in different scenarios. The default file path is <code>/usr/local/nebula/etc/</code>.</p>
-<h2 id="how_to_use_the_configuration_files">How to use the configuration files<a class="headerlink" href="#how_to_use_the_configuration_files" title="Permanent link">¶</a></h2>
-<p>The Graph Service gets its configuration from the <code>nebula-graphd.conf</code> file. You have to remove the suffix <code>.default</code> or <code>.production</code> from an initial configuration file for the Graph Service to apply the configuration defined in it.</p>
-<p>If you have modified the configuration in the file and want new configuration to take effect, add <code>--local_conf=true</code> at the top of the file. Otherwise, Nebula Graph reads the cached configuration.</p>
-<h2 id="about_parameter_values">About parameter values<a class="headerlink" href="#about_parameter_values" title="Permanent link">¶</a></h2>
-<p>If a parameter is not set in the configuration file, Nebula Graph uses its default value.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The default value of a parameter in Nebula Graph may be different from the predefined value in the <code>.default</code> and <code>.production</code> files.</p>
+<p>Nebula Graph provides two initial configuration files for the Graph Service, <code>nebula-graphd.conf.default</code> and <code>nebula-graphd.conf.production</code>. Users can use them in different scenarios conveniently. The default file path is <code>/usr/local/nebula/etc/</code>.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<ul>
+<li>It is not recommended to modify the value of <code>local_config</code> to <code>false</code>. If modified, the Nebula Graph service will first read the cached configurations, which may cause configuration inconsistencies between clusters and cause unknown risks.</li>
+<li>It is not recommended to modify the configurations that are not introduced in this topic, unless you are familiar with the source code and fully understand the function of configurations.</li>
+</ul>
 </div>
-<p>The predefined parameters in <code>nebula-graphd.conf.default</code> and <code>nebula-graphd.conf.production</code> are different. And not all parameters are predefined. This topic uses the parameters in <code>nebula-graphd.conf.default</code>.</p>
-<h2 id="basic_configurations">Basic configurations<a class="headerlink" href="#basic_configurations" title="Permanent link">¶</a></h2>
+<h2 id="how_to_use_the_configuration_files">How to use the configuration files<a class="headerlink" href="#how_to_use_the_configuration_files" title="Permanent link">¶</a></h2>
+<p>To use the initial configuration file, choose one of the above two files and delete the suffix <code>.default</code> or <code>.production</code> from the initial configuration file for the Meta Service to apply the configurations defined in it.</p>
+<h2 id="about_parameter_values">About parameter values<a class="headerlink" href="#about_parameter_values" title="Permanent link">¶</a></h2>
+<p>If a parameter is not set in the configuration file, Nebula Graph uses the default value. Not all parameters are predefined. And the predefined parameters in the two initial configuration files are different. This topic uses the parameters in <code>nebula-metad.conf.default</code>.</p>
+<p>For all parameters and their current values, see <a href="../1.configurations/">Configurations</a>.</p>
+<h2 id="basics_configurations">Basics configurations<a class="headerlink" href="#basics_configurations" title="Permanent link">¶</a></h2>
 <table>
 <thead>
 <tr>
 <th>Name</th>
-<th>Predefine Value</th>
-<th>Descriptions</th>
+<th>Predefined value</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
@@ -1499,7 +2178,7 @@
 <tr>
 <td><code>pid_file</code></td>
 <td><code>pids/nebula-graphd.pid</code></td>
-<td>File to host the process ID.</td>
+<td>The file that records the process ID.</td>
 </tr>
 <tr>
 <td><code>enable_optimizer</code></td>
@@ -1507,16 +2186,26 @@
 <td>When set to <code>true</code>, the optimizer is enabled.</td>
 </tr>
 <tr>
+<td><code>system_memory_high_watermark_ratio</code></td>
+<td>-</td>
+<td>Specifies the trigger threshold of the high-level memory alarm mechanism. The default value is <code>0.8</code>. If the system memory usage is higher than this value, an alarm mechanism will be triggered, and Nebula Graph will stop querying. This parameter is not predefined in the initial configuration files.</td>
+</tr>
+<tr>
 <td><code>timezone_name</code></td>
 <td>-</td>
-<td>Specifies the Nebula Graph time zone. This parameter is not predefined in the initial configuration files. You can manually set it if you need it. The system default value is <code>UTC+00:00:00</code>. For the format of the parameter value, see <a href="https://www.gnu.org/software/libc/manual/html_node/TZ-Variable.html" title="Click to view the timezone-related content in the GNU C Library manual">Specifying the Time Zone with TZ</a>. For example, <code>--timezone_name=CST-8</code> represents the GMT+8 time zone.</td>
+<td>Specifies the Nebula Graph time zone. This parameter is not predefined in the initial configuration files. The system default value is <code>UTC+00:00:00</code>. For the format of the parameter value, see <a href="https://www.gnu.org/software/libc/manual/html_node/TZ-Variable.html" title="Click to view the timezone-related content in the GNU C Library manual">Specifying the Time Zone with TZ</a>. For example， <code>--timezone_name=UTC+08:00</code> represents the GMT+8 time zone.</td>
+</tr>
+<tr>
+<td><code>local_config</code></td>
+<td><code>true</code></td>
+<td>When set to <code>true</code>, the process gets configurations from the configuration files.</td>
 </tr>
 </tbody>
 </table>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <ul>
-<li>While inserting time-type property values except timestamps, Nebula Graph transforms them to a UTC time according to the time zone specified with the <code>timezone_name</code> parameter in the <a href="../1.configurations/">configuration files</a>. The time-type values returned by nGQL queries are all UTC time.</li>
+<li>While inserting property values of <a href="../../../3.ngql-guide/3.data-types/4.date-and-time/">time types</a>, Nebula Graph transforms them to a UTC time according to the time zone specified by <code>timezone_name</code>. The time-type values returned by nGQL queries are all UTC time.</li>
 <li><code>timezone_name</code> is only used to transform the data stored in Nebula Graph. Other time-related data of the Nebula Graph processes still uses the default time zone of the host, such as the log printing time.</li>
 </ul>
 </div>
@@ -1525,50 +2214,72 @@
 <thead>
 <tr>
 <th>Name</th>
-<th>Predefine Value</th>
-<th>Descriptions</th>
+<th>Predefined value</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>log_dir</code></td>
 <td><code>logs</code></td>
-<td>Directory to the Graph Service log. We recommend that you put logs on a different hard disk from the <code>data_path</code>.</td>
+<td>The directory that stores the Meta Service log. It is recommended to put logs on a different hard disk from the data.</td>
 </tr>
 <tr>
 <td><code>minloglevel</code></td>
 <td><code>0</code></td>
-<td>Specifies the minimum log level. Available values are <code>0</code> (INFO), <code>1</code> (WARNING), <code>2</code> (ERROR), and <code>3</code> (FATAL). We suggest that you set <code>minloglevel</code> to <code>0</code> for debugging and <code>1</code> for production. When you set it to <code>4</code>, Nebula Graph does not print any logs.</td>
+<td>Specifies the minimum level of the log. That is, no logs below this level will be printed. Optional values are <code>0</code> (INFO), <code>1</code> (WARNING), <code>2</code> (ERROR), <code>3</code> (FATAL). It is recommended to set it to <code>0</code> during debugging and <code>1</code> in a production environment. If it is set to <code>4</code>, Nebula Graph will not print any logs.</td>
 </tr>
 <tr>
 <td><code>v</code></td>
 <td><code>0</code></td>
-<td>Specifies the verbose log level. Available values are 0-4. The larger the value, the more verbose the log.</td>
+<td>Specifies the detailed level of the log. The larger the value, the more detailed the log is. Optional values are <code>0</code>, <code>1</code>, <code>2</code>, <code>3</code>.</td>
 </tr>
 <tr>
 <td><code>logbufsecs</code></td>
 <td><code>0</code></td>
-<td>Specifies the maximum time to buffer the logs. The configuration is measured in seconds.</td>
+<td>Specifies the maximum time to buffer the logs. If there is a timeout, it will output the buffered log to the log file. <code>0</code> means real-time output. This configuration is measured in seconds.</td>
 </tr>
 <tr>
 <td><code>redirect_stdout</code></td>
 <td><code>true</code></td>
-<td>When set to <code>true</code>, stdout and stderr are redirected.</td>
+<td>When set to <code>true</code>, the process redirects the<code>stdout</code> and <code>stderr</code> to separate output files.</td>
 </tr>
 <tr>
 <td><code>stdout_log_file</code></td>
 <td><code>graphd-stdout.log</code></td>
-<td>Specifies the filename for the stdout log.</td>
+<td>Specifies the filename for the <code>stdout</code> log.</td>
 </tr>
 <tr>
 <td><code>stderr_log_file</code></td>
 <td><code>graphd-stderr.log</code></td>
-<td>Specifies the filename for the stderr log.</td>
+<td>Specifies the filename for the <code>stderr</code> log.</td>
 </tr>
 <tr>
 <td><code>stderrthreshold</code></td>
 <td><code>2</code></td>
-<td>Specifies the minimum level to copy the log messages to stderr.</td>
+<td>Specifies the <code>minloglevel</code> to be copied to the <code>stderr</code> log.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="query_configurations">Query configurations<a class="headerlink" href="#query_configurations" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Predefined value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>accept_partial_success</code></td>
+<td><code>false</code></td>
+<td>When set to <code>false</code>, the process treats partial success as an error. This configuration only applies to read-only requests. Write requests always treat partial success as an error.</td>
+</tr>
+<tr>
+<td><code>session_reclaim_interval_secs</code></td>
+<td><code>10</code></td>
+<td>Specifies the interval that the Session information is sent to the Meta service. This configuration is measured in seconds.</td>
 </tr>
 </tbody>
 </table>
@@ -1577,65 +2288,65 @@
 <thead>
 <tr>
 <th>Name</th>
-<th>Predefine Value</th>
-<th>Descriptions</th>
+<th>Predefined value</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>meta_server_addrs</code></td>
 <td><code>127.0.0.1:9559</code></td>
-<td>Specifies the IP addresses and ports of all Meta Services. Separate multiple addresses with commas.</td>
+<td>Specifies the IP addresses and ports of all Meta Services.  Multiple addresses are separated with commas.</td>
 </tr>
 <tr>
 <td><code>local_ip</code></td>
 <td><code>127.0.0.1</code></td>
-<td>Specifies the local IP for the Graph Service.</td>
+<td>Specifies the local IP for the Graph Service. The local IP address is used to identify the nebula-graphd process. If it is a distributed cluster or requires remote access, modify it to the corresponding address.</td>
 </tr>
 <tr>
 <td><code>listen_netdev</code></td>
 <td><code>any</code></td>
-<td>Specifies the network device to listen on.</td>
+<td>Specifies the listening network device.</td>
 </tr>
 <tr>
 <td><code>port</code></td>
 <td><code>9669</code></td>
-<td>Specifies RPC daemon listening port. The external port for the Graph Service is <code>9669</code>.</td>
+<td>Specifies RPC daemon listening port of the Graph service.</td>
 </tr>
 <tr>
 <td><code>reuse_port</code></td>
 <td><code>false</code></td>
-<td>When set to <code>false</code>, the SO_REUSEPORT is closed.</td>
+<td>When set to <code>false</code>, the <code>SO_REUSEPORT</code> is closed.</td>
 </tr>
 <tr>
 <td><code>listen_backlog</code></td>
 <td><code>1024</code></td>
-<td>Specifies the backlog for the listen socket. You must modify this configuration together with the <code>net.core.somaxconn</code>.</td>
+<td>Specifies the maximum length of the connection queue for socket monitoring. This configuration must be modified together with the <code>net.core.somaxconn</code>.</td>
 </tr>
 <tr>
 <td><code>client_idle_timeout_secs</code></td>
 <td><code>0</code></td>
-<td>Specifies the time to close an idle connection. This configuration is measured in seconds.</td>
+<td>Specifies the time to expire an idle connection. <code>0</code> means that the connection will never expire. This configuration is measured in seconds.</td>
 </tr>
 <tr>
 <td><code>session_idle_timeout_secs</code></td>
 <td><code>0</code></td>
-<td>Specifies the time to expire an idle session. This configuration is measured in seconds.</td>
+<td>Specifies the time to expire an idle session. <code>0</code> means that the session will never expire. This configuration is measured in seconds.</td>
 </tr>
 <tr>
 <td><code>num_accept_threads</code></td>
 <td><code>1</code></td>
-<td>Specifies the thread number to accept incoming connections.</td>
+<td>Specifies the number of threads that accept incoming connections.</td>
 </tr>
 <tr>
 <td><code>num_netio_threads</code></td>
 <td><code>0</code></td>
-<td>Specifies the networking IO threads number. <code>0</code> is the number of CPU cores.</td>
+<td>Specifies the number of networking IO threads. <code>0</code> is the number of CPU cores.</td>
 </tr>
 <tr>
 <td><code>num_worker_threads</code></td>
 <td><code>0</code></td>
-<td>Specifies the thread number to execute user queries. <code>0</code> is the number of CPU cores.</td>
+<td>Specifies the number of threads that execute queries. <code>0</code> is the number of CPU cores.</td>
 </tr>
 <tr>
 <td><code>ws_ip</code></td>
@@ -1655,48 +2366,53 @@
 <tr>
 <td><code>heartbeat_interval_secs</code></td>
 <td><code>10</code></td>
-<td>Specifies the default heartbeat interval in seconds. Make sure the <code>heartbeat_interval_secs</code> values for all services are the same, otherwise Nebula Graph <strong>CANNOT</strong> work normally.</td>
+<td>Specifies the default heartbeat interval. Make sure the <code>heartbeat_interval_secs</code> values for all services are the same, otherwise Nebula Graph <strong>CANNOT</strong> work normally. This configuration is measured in seconds.</td>
 </tr>
 <tr>
 <td><code>storage_client_timeout_ms</code></td>
 <td>-</td>
 <td>Specifies the RPC connection timeout threshold between the Graph Service and the Storage Service. This parameter is not predefined in the initial configuration files. You can manually set it if you need it. The system default value is <code>60000</code>ms.</td>
 </tr>
+<tr>
+<td><code>ws_meta_http_port</code></td>
+<td><code>19559</code></td>
+<td>Specifies the Meta service listening port used by the HTTP protocol. It must be consistent with the <code>ws_http_port</code> in the Meta service configuration file.</td>
+</tr>
 </tbody>
 </table>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>We recommend that you use the real IP address in your configuration because sometimes <code>127.0.0.1</code> can not be parsed correctly.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>The real IP address must be used in the configuration file. Otherwise, <code>127.0.0.1/0.0.0.0</code> cannot be parsed correctly in some cases.</p>
 </div>
 <h2 id="charset_and_collate_configurations">Charset and collate configurations<a class="headerlink" href="#charset_and_collate_configurations" title="Permanent link">¶</a></h2>
 <table>
 <thead>
 <tr>
 <th>Name</th>
-<th>Predefine Value</th>
-<th>Descriptions</th>
+<th>Predefined value</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>default_charset</code></td>
 <td><code>utf8</code></td>
-<td>Specifies the default charset when you create a new graph space.</td>
+<td>Specifies the default charset when creating a new graph space.</td>
 </tr>
 <tr>
 <td><code>default_collate</code></td>
 <td><code>utf8_bin</code></td>
-<td>Specifies the default collate when you create a new graph space.</td>
+<td>Specifies the default collate when creating a new graph space.</td>
 </tr>
 </tbody>
 </table>
-<h2 id="authorization_and_authentication_configurations">Authorization and authentication configurations<a class="headerlink" href="#authorization_and_authentication_configurations" title="Permanent link">¶</a></h2>
+<h2 id="authorization_configurations">Authorization configurations<a class="headerlink" href="#authorization_configurations" title="Permanent link">¶</a></h2>
 <table>
 <thead>
 <tr>
 <th>Name</th>
-<th>Predefine Value</th>
-<th>Descriptions</th>
+<th>Predefined value</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
@@ -1712,25 +2428,20 @@
 </tr>
 </tbody>
 </table>
-<p>If you have set <code>enable_authorize</code> to <code>true</code>, you can only log in with the root account. For example:</p>
-<div class="highlight"><pre><span></span><code>/usr/local/nebula/bin/nebula -u root -p nebula --addr<span class="o">=</span><span class="m">127</span>.0.0.1 --port<span class="o">=</span><span class="m">9669</span>
-</code></pre></div>
-<p>If you have set <code>enable_authorize</code> to <code>false</code>, you can log in with any account and password. For example:</p>
-<div class="highlight"><pre><span></span><code>/usr/local/nebula/bin/nebula -u any -p <span class="m">123</span> --addr<span class="o">=</span><span class="m">127</span>.0.0.1 --port<span class="o">=</span><span class="m">9669</span>
-</code></pre></div>
 <hr/>
 <div class="md-source-date">
 <small>
     
-      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 22, 2021</span>
+      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 6, 2021</span>
 </small>
 </div>
 </article>
 </div>
 </div>
-<a class="md-top md-icon" data-md-component="top" data-md-state="hidden" href="#" title="Back to top">
+<a class="md-top md-icon" data-md-component="top" data-md-state="hidden" href="#">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path></svg>
-</a>
+            Back to top
+          </a>
 </main>
 <footer class="md-footer">
 <nav aria-label="Footer" class="md-footer__inner md-grid">
@@ -1785,8 +2496,8 @@
 <div class="md-dialog" data-md-component="dialog">
 <div class="md-dialog__inner md-typeset"></div>
 </div>
-<script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.top"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.b0710199.min.js", "version": {"method": "mike"}}</script>
-<script src="../../../assets/javascripts/bundle.76f349be.min.js"></script>
+<script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.top"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.409db549.min.js", "version": {"method": "mike"}}</script>
+<script src="../../../assets/javascripts/bundle.756773cc.min.js"></script>
 <script src="../../../js/version-select.js"></script>
 <script src="../../../js/jquery.js"></script>
 <script src="../../../js/search.js"></script>
