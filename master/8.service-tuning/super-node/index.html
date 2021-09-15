@@ -2169,6 +2169,10 @@
 <p>In Nebula Graph, a vertex and its properties form a key-value pair, with the ID of the vertex and other meta information as the key. Its outgoing edges are stored with it in <a href="../../1.introduction/3.nebula-graph-architecture/4.storage-service/">the same partition</a> in the form of different key-value pairs, and they are stored in LSM-trees in hard disks and caches.</p>
 <p>Therefore, directed traversals from this vertex and directed traversals ending at this vertex both involve either a large number of sequential IO scans (ideally, after compaction) or a large number of random IO (frequent writes to the vertex and its ingoing and outgoing edges).</p>
 <p>As a rule of thumb, a vertex is considered dense when the number of its edges exceeds 10,000. Some special cases require additional consideration。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In Nebula Graph 2.5.0, there isn't any data structure to store the out/in degree for each vertex. Therefore there is no direct method to know a super vertex or not. You can try to use Spark to count the degrees periodically. </p>
+</div>
 <h3 id="indexes_for_duplicate_properties">Indexes for duplicate properties<a class="headerlink" href="#indexes_for_duplicate_properties" title="Permanent link">¶</a></h3>
 <p>In a property graph, there is another class of cases similar to super vertices: a property has a very high duplication rate, i.e., many vertices with the same Tag but different VIDs have identical property and property values.</p>
 <p>Property indexes in Nebula Graph are designed to reuse the functionality of RocksDB in the Storage Service, in which case indexes are modeled as keys with the same prefix. If the lookup of a property fails to hit the cache, it is processed as a random seek and a sequential prefix scan on the hard disk to find the corresponding VID. After that, the graph is usually traversed from this vertex, so that another random read and sequential scan for the corresponding key-value of this vertex will be triggered. The higher the duplication rate, the larger the scan range.</p>
@@ -2209,7 +2213,7 @@
 <div class="md-source-date">
 <small>
     
-      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 2, 2021</span>
+      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 15, 2021</span>
 </small>
 </div>
 </article>

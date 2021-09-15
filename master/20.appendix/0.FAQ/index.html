@@ -2663,29 +2663,12 @@ nebula &gt; MATCH (s)&lt;-[e]-() WHERE id(s) == "given" RETURN count(e); #In-deg
 <p>By default, the logs of Nebula Graph are stored in  <code>/usr/local/nebula/logs/</code>. The INFO level log files are <code>nebula-graphd.INFO, nebula-storaged.INFO, nebula-metad.INFO</code>. If an alarm or error occurs, the suffixes are modified as <code>.WARNING</code> or <code>.ERROR</code>.</p>
 <p>Nebula Graph uses <a href="https://github.com/google/glog">glog</a> to print logs. <code>glog</code> cannot recycle the outdated files. You can use crontab to delete them by yourself. For more information, see <a href="https://github.com/google/glog/issues/423"><code>Glog should delete old log files automatically</code></a>.</p>
 <h3 id="how_to_check_the_nebula_graph_version">"How to check the Nebula Graph version?"<a class="headerlink" href="#how_to_check_the_nebula_graph_version" title="Permanent link">¶</a></h3>
-<p>If the service is running: run command <code>SHOW HOSTS META</code> in <code>nebula-console</code>. See <a href="../../3.ngql-guide/7.general-query-statements/6.show/6.show-hosts/">SHOW HOSTS</a>.</p>
-<p>If the service is not running:</p>
-<p>Different installation methods make the method of checking the version different. The instructions are as follows:</p>
-<ul>
-<li>
-<p>If you install Nebula Graph by compiling the source code</p>
-<ol>
-<li>
-<p>Use the <code>./&lt;binary_name&gt; --version</code> command to get the Git commit IDs of the Nebula Graph binary files. For example:</p>
+<p>If the service is running, run the command <code>SHOW HOSTS META</code> in <code>nebula-console</code>. See <a href="../../3.ngql-guide/7.general-query-statements/6.show/6.show-hosts/">SHOW HOSTS</a>.</p>
+<p>If the service is not running, run the command <code>./&lt;binary_name&gt; --version</code> to get the version and the Git commit IDs of the Nebula Graph binary files. For example:</p>
 <div class="highlight"><pre><span></span><code>$ ./nebula-graphd --version
-nebula-graphd version Git: ab4f683, Build Time: Mar <span class="m">24</span> <span class="m">2021</span> <span class="m">02</span>:17:30
+nebula-graphd version <span class="m">2</span>.5.0, Git: c397299c, Build Time: Aug <span class="m">19</span> <span class="m">2021</span> <span class="m">11</span>:20:18
 This <span class="nb">source</span> code is licensed under Apache <span class="m">2</span>.0 License, attached with Common Clause Condition <span class="m">1</span>.0.
 </code></pre></div>
-</li>
-<li>
-<p>Search for the commit ID on the <a href="https://github.com/vesoft-inc/nebula/commits/master">GitHub commits</a> page. Check the commit time.</p>
-</li>
-<li>
-<p>Compare the commit time with the <a href="https://github.com/vesoft-inc/nebula/releases">Release time</a>of Nebula Graph versions to find out the version of the Nebula Graph services.</p>
-</li>
-</ol>
-</li>
-</ul>
 <ul>
 <li>
 <p>If you deploy Nebula Graph with Docker Compose</p>
@@ -2775,7 +2758,7 @@ telnet: connect to address <span class="m">192</span>.168.1.10: Connection refus
 <div class="md-source-date">
 <small>
     
-      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 7, 2021</span>
+      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 15, 2021</span>
 </small>
 </div>
 </article>
