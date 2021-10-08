@@ -9,9 +9,9 @@
 <meta content="Nebula Graph" name="author"/>
 <link href="https://docs.nebula-graph.io/master/nebula-spark-connector/" rel="canonical"/>
 <link href="../assets/images/favicon.ico" rel="icon"/>
-<meta content="mkdocs-1.2.2, mkdocs-material-7.3.0" name="generator"/>
+<meta content="mkdocs-1.2.2, mkdocs-material-7.3.2" name="generator"/>
 <title>Nebula Spark Connector - Nebula Graph Database Manual</title>
-<link href="../assets/stylesheets/main.8b42a75e.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/main.24c991ad.min.css" rel="stylesheet"/>
 <link href="../assets/stylesheets/palette.3f5d1f46.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&amp;display=fallback" rel="stylesheet"/>
@@ -1991,6 +1991,76 @@
 </ul>
 </nav>
 </li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_17" id="__nav_17" type="checkbox"/>
+<label class="md-nav__link" for="__nav_17">
+          Nebula Operator
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Nebula Operator" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_17">
+<span class="md-nav__icon md-icon"></span>
+          Nebula Operator
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../nebula-operator/1.introduction-to-nebula-operator/">
+        What is Nebula Operator
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../nebula-operator/6.get-started-with-operator/">
+        Overview of using Nebula Operator
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../nebula-operator/2.deploy-nebula-operator/">
+        Deploy Nebula Operator
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_17_4" id="__nav_17_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_17_4">
+          Deploy clusters
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Deploy clusters" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_17_4">
+<span class="md-nav__icon md-icon"></span>
+          Deploy clusters
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../nebula-operator/3.deploy-nebula-graph-cluster/3.1create-cluster-with-kubectl/">
+        Deploy clusters with Kubectl
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../nebula-operator/3.deploy-nebula-graph-cluster/3.2create-cluster-with-helm/">
+        Deploy clusters with Helm
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../nebula-operator/4.connect-to-nebula-graph-service/">
+        Connect to Nebula Graph databases
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../nebula-operator/5.operator-failover/">
+        Self-healing
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../nebula-operator/7.operator-faq/">
+        FAQ
+      </a>
+</li>
+</ul>
+</nav>
+</li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../nebula-algorithm/">
         Nebula Algorithm
@@ -2073,13 +2143,13 @@
       </a>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_21" id="__nav_21" type="checkbox"/>
-<label class="md-nav__link" for="__nav_21">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_22" id="__nav_22" type="checkbox"/>
+<label class="md-nav__link" for="__nav_22">
           Appendix
           <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Appendix" class="md-nav" data-md-level="1">
-<label class="md-nav__title" for="__nav_21">
+<label class="md-nav__title" for="__nav_22">
 <span class="md-nav__icon md-icon"></span>
           Appendix
         </label>
@@ -2203,7 +2273,7 @@
 <p>Provides a Spark SQL interface. This interface can be used to write DataFrames into Nebula Graph in a row-by-row or batch-import way.</p>
 </li>
 </ul>
-<p>For more information, see <a href="https://github.com/vesoft-inc/nebula-spark-utils/blob/v2.5/nebula-spark-connector/README.md">Nebula Spark Connector</a>.</p>
+<p>For more information, see <a href="https://github.com/vesoft-inc/nebula-spark-utils/blob/v2.5.1/nebula-spark-connector/README.md">Nebula Spark Connector</a>.</p>
 <h2 id="use_cases">Use cases<a class="headerlink" href="#use_cases" title="Permanent link">¶</a></h2>
 <p>Nebula Spark Connector applies to the following scenarios:</p>
 <ul>
@@ -2219,7 +2289,7 @@
 <li>Graph computing with <a href="../nebula-algorithm/">Nebula Algorithm</a>.</li>
 </ul>
 <h2 id="benefits">Benefits<a class="headerlink" href="#benefits" title="Permanent link">¶</a></h2>
-<p>The features of Nebula Spark Connector 2.5.0 are as follows:</p>
+<p>The features of Nebula Spark Connector 2.5.1 are as follows:</p>
 <ul>
 <li>Supports multiple connection settings, such as timeout period, number of connection retries, number of execution retries, etc.</li>
 </ul>
@@ -2236,7 +2306,7 @@
 <li>Unifies the extended data source of SparkSQL, and uses DataSourceV2 to extend Nebula Graph data.</li>
 </ul>
 <ul>
-<li>Two write modes, <code>insert</code> and <code>update</code>, are supported. <code>insert</code> mode will insert (overwrite) data, and <code>update</code> mode will only update existing data.</li>
+<li>Three write modes, <code>insert</code>, <code>update</code> and <code>delete</code>, are supported. <code>insert</code> mode will insert (overwrite) data, <code>update</code> mode will only update existing data, and <code>delete</code> mode will only delete data.</li>
 </ul>
 <h2 id="get_nebula_spark_connector">Get Nebula Spark Connector<a class="headerlink" href="#get_nebula_spark_connector" title="Permanent link">¶</a></h2>
 <h3 id="compile_package">Compile package<a class="headerlink" href="#compile_package" title="Permanent link">¶</a></h3>
@@ -2247,7 +2317,7 @@
 <ol>
 <li>
 <p>Clone repository <code>nebula-spark-utils</code>.</p>
-<div class="highlight"><pre><span></span><code>$ git clone -b v2.5 https://github.com/vesoft-inc/nebula-spark-utils.git
+<div class="highlight"><pre><span></span><code>$ git clone -b v2.5.1 https://github.com/vesoft-inc/nebula-spark-utils.git
 </code></pre></div>
 </li>
 <li>
@@ -2261,7 +2331,7 @@
 </code></pre></div>
 </li>
 </ol>
-<p>After compilation, a similar file <code>nebula-spark-connector-2.5.0-SHANPSHOT.jar</code> is generated in the directory <code>nebula-spark-connector/target</code>.</p>
+<p>After compilation, a similar file <code>nebula-spark-connector-2.5.1-SHANPSHOT.jar</code> is generated in the directory <code>nebula-spark-connector/target</code>.</p>
 <h3 id="download_maven_remote_repository">Download maven remote repository<a class="headerlink" href="#download_maven_remote_repository" title="Permanent link">¶</a></h3>
 <p><a href="https://repo1.maven.org/maven2/com/vesoft/nebula-spark-connector/">Download</a></p>
 <h2 id="how_to_use">How to use<a class="headerlink" href="#how_to_use" title="Permanent link">¶</a></h2>
@@ -2626,7 +2696,7 @@
 <div class="md-source-date">
 <small>
     
-      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 15, 2021</span>
+      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">October 8, 2021</span>
 </small>
 </div>
 </article>
@@ -2691,8 +2761,8 @@
 <div class="md-dialog" data-md-component="dialog">
 <div class="md-dialog__inner md-typeset"></div>
 </div>
-<script id="__config" type="application/json">{"base": "..", "features": ["navigation.top"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.f8263e09.min.js", "version": {"method": "mike"}}</script>
-<script src="../assets/javascripts/bundle.4fc53ad4.min.js"></script>
+<script id="__config" type="application/json">{"base": "..", "features": ["navigation.top"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.e99e714c.min.js", "version": {"method": "mike"}}</script>
+<script src="../assets/javascripts/bundle.bc35569b.min.js"></script>
 <script src="../js/version-select.js"></script>
 <script src="../js/jquery.js"></script>
 <script src="../js/search.js"></script>
