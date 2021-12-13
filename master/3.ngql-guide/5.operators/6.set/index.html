@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://docs.nebula-graph.io/master/3.ngql-guide/5.operators/6.set/">
       
       <link rel="icon" href="../../../assets/images/favicon.ico">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.0.3">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.0">
     
     
       
@@ -23,7 +23,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.62128196.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.82f3c0b9.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.9204c3b2.min.css">
@@ -48,7 +48,7 @@
     
       <link rel="stylesheet" href="../../../stylesheets/extra.css">
     
-    <script>function __md_scope(e,t,_){return new URL(_||(t===localStorage?"../../..":"../../.."),location).pathname+"."+e}function __md_get(e,t=localStorage,_){return JSON.parse(t.getItem(__md_scope(e,t,_)))}function __md_set(e,t,_=localStorage,o){try{_.setItem(__md_scope(e,_,o),JSON.stringify(t))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -6182,11 +6182,11 @@
 </ul>
 <h3 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code># The following statement returns the union of two query results without duplicated elements.
-nebula&gt; GO FROM &quot;player102&quot; OVER follow \
+nebula&gt; GO FROM &quot;player102&quot; OVER follow YIELD dst(edge) \
         UNION \
-        GO FROM &quot;player100&quot; OVER follow;
+        GO FROM &quot;player100&quot; OVER follow YIELD dst(edge);
 +-------------+
-| follow._dst |
+| dst(EDGE)   |
 +-------------+
 | &quot;player100&quot; |
 | &quot;player101&quot; |
@@ -6194,13 +6194,14 @@ nebula&gt; GO FROM &quot;player102&quot; OVER follow \
 +-------------+
 
 # The following statement returns the union of two query results with duplicated elements.
-nebula&gt; GO FROM &quot;player102&quot; OVER follow \
+nebula&gt; GO FROM &quot;player102&quot; OVER follow YIELD dst(edge) \
         UNION ALL \
-        GO FROM &quot;player100&quot; OVER follow;
+        GO FROM &quot;player100&quot; OVER follow YIELD dst(edge);
 +-------------+
-| follow._dst |
+| dst(EDGE)   |
 +-------------+
 | &quot;player100&quot; |
+| &quot;player101&quot; |
 | &quot;player101&quot; |
 | &quot;player125&quot; |
 +-------------+
@@ -6245,20 +6246,20 @@ nebula&gt; GO FROM &quot;player102&quot; OVER follow \
 </code></pre></div>
 <p>Operator <code>MINUS</code> returns the subtraction (or difference) of two sets A and B (denoted by <code>A-B</code>). Always pay attention to the order of <code>left</code> and <code>right</code>. The set <code>A-B</code> consists of elements that are in A but not in B.</p>
 <h3 id="example_1">Example<a class="headerlink" href="#example_1" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>nebula&gt; GO FROM &quot;player100&quot; OVER follow \
+<div class="highlight"><pre><span></span><code>nebula&gt; GO FROM &quot;player100&quot; OVER follow YIELD dst(edge) \
         MINUS \
-        GO FROM &quot;player102&quot; OVER follow;
+        GO FROM &quot;player102&quot; OVER follow YIELD dst(edge);
 +-------------+
-| dst(edge)   |
+| dst(EDGE)   |
 +-------------+
 | &quot;player125&quot; |
 +-------------+
 
-nebula&gt; GO FROM &quot;player102&quot; OVER follow \
+nebula&gt; GO FROM &quot;player102&quot; OVER follow YIELD dst(edge) \
         MINUS \
-        GO FROM &quot;player100&quot; OVER follow;
+        GO FROM &quot;player100&quot; OVER follow YIELD dst(edge);
 +-------------+
-| follow._dst |
+| dst(EDGE)   |
 +-------------+
 | &quot;player100&quot; |
 +-------------+
@@ -6299,7 +6300,7 @@ nebula&gt; GO FROM &quot;player102&quot; OVER follow \
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 1, 2021</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 8, 2021</span>
       
     
   </small>
@@ -6391,10 +6392,10 @@ nebula&gt; GO FROM &quot;player102&quot; OVER follow \
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.top"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.01824240.min.js", "version": {"method": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.top"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.cefbb252.min.js", "version": {"method": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.e0abf5b0.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.17f42bbf.min.js"></script>
       
         <script src="../../../js/version-select.js"></script>
       

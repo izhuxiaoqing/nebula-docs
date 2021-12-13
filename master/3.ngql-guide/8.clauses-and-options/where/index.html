@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://docs.nebula-graph.io/master/3.ngql-guide/8.clauses-and-options/where/">
       
       <link rel="icon" href="../../../assets/images/favicon.ico">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.0.3">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.0">
     
     
       
@@ -23,7 +23,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.62128196.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.82f3c0b9.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.9204c3b2.min.css">
@@ -48,7 +48,7 @@
     
       <link rel="stylesheet" href="../../../stylesheets/extra.css">
     
-    <script>function __md_scope(e,t,_){return new URL(_||(t===localStorage?"../../..":"../../.."),location).pathname+"."+e}function __md_get(e,t=localStorage,_){return JSON.parse(t.getItem(__md_scope(e,t,_)))}function __md_set(e,t,_=localStorage,o){try{_.setItem(__md_scope(e,_,o),JSON.stringify(t))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -6300,11 +6300,12 @@
 | &quot;Ben Simmons&quot;        | 22     |
 +----------------------+--------+
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>nebula&gt; GO FROM &quot;player100&quot; \
-        OVER follow \
-        WHERE $^.player.age &gt;= 42;
+<div class="highlight"><pre><span></span><code>nebula&gt; GO FROM &quot;player100&quot; OVER follow \
+        WHERE $^.player.age &gt;= 42 \
+        YIELD dst(edge);
 +-------------+
-| follow._dst |
+| dst(EDGE)   |
++-------------+
 +-------------+
 | &quot;player101&quot; |
 | &quot;player125&quot; |
@@ -6327,11 +6328,11 @@
 +--------------------+-------+
 ...
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>nebula&gt; GO FROM &quot;player100&quot; \
-        OVER follow \
-        WHERE follow.degree &gt; 90;
+<div class="highlight"><pre><span></span><code>nebula&gt; GO FROM &quot;player100&quot; OVER follow \
+        WHERE follow.degree &gt; 90 \
+        YIELD dst(edge);
 +-------------+
-| follow._dst |
+| dst(EDGE)   |
 +-------------+
 | &quot;player101&quot; |
 | &quot;player125&quot; |
@@ -6494,15 +6495,15 @@ Empty set (time spent 5080/6474 us)
 nebula&gt; LOOKUP ON player \
         WHERE player.age IN [25,28]  \
         YIELD properties(vertex).name, properties(vertex).age;
-+-------------+-------------------------+------------------------+
-| VertexID    | properties(VERTEX).name | properties(VERTEX).age |
-+-------------+-------------------------+------------------------+
-| &quot;player106&quot; | &quot;Kyle Anderson&quot;         | 25                     |
-| &quot;player135&quot; | &quot;Damian Lillard&quot;        | 28                     |
-| &quot;player130&quot; | &quot;Joel Embiid&quot;           | 25                     |
-| &quot;player131&quot; | &quot;Paul George&quot;           | 28                     |
-| &quot;player123&quot; | &quot;Ricky Rubio&quot;           | 28                     |
-+-------------+-------------------------+------------------------+
++-------------------------+------------------------+
+| properties(VERTEX).name | properties(VERTEX).age |
++-------------------------+------------------------+
+| &quot;Kyle Anderson&quot;         | 25                     |
+| &quot;Damian Lillard&quot;        | 28                     |
+| &quot;Joel Embiid&quot;           | 25                     |
+| &quot;Paul George&quot;           | 28                     |
+| &quot;Ricky Rubio&quot;           | 28                     |
++-------------------------+------------------------+
 </code></pre></div>
 <h3 id="match_values_not_in_a_list">Match values not in a list<a class="headerlink" href="#match_values_not_in_a_list" title="Permanent link">&para;</a></h3>
 <p>Use <code>NOT</code> before <code>IN</code> to rule out the values in a list.</p>
@@ -6527,7 +6528,7 @@ nebula&gt; LOOKUP ON player \
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 1, 2021</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 8, 2021</span>
       
     
   </small>
@@ -6619,10 +6620,10 @@ nebula&gt; LOOKUP ON player \
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.top"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.01824240.min.js", "version": {"method": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.top"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.cefbb252.min.js", "version": {"method": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.e0abf5b0.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.17f42bbf.min.js"></script>
       
         <script src="../../../js/version-select.js"></script>
       

@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://docs.nebula-graph.io/master/3.ngql-guide/12.vertex-statements/1.insert-vertex/">
       
       <link rel="icon" href="../../../assets/images/favicon.ico">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.0.3">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.0">
     
     
       
@@ -23,7 +23,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.62128196.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.82f3c0b9.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.9204c3b2.min.css">
@@ -48,7 +48,7 @@
     
       <link rel="stylesheet" href="../../../stylesheets/extra.css">
     
-    <script>function __md_scope(e,t,_){return new URL(_||(t===localStorage?"../../..":"../../.."),location).pathname+"."+e}function __md_get(e,t=localStorage,_){return JSON.parse(t.getItem(__md_scope(e,t,_)))}function __md_set(e,t,_=localStorage,o){try{_.setItem(__md_scope(e,_,o),JSON.stringify(t))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -6037,7 +6037,7 @@
 <p>Running the <code>INSERT VERTEX</code> statement requires some <a href="../../../7.data-security/1.authentication/3.role-list/">privileges</a> for the graph space. Otherwise, Nebula Graph throws an error.</p>
 <h2 id="syntax">Syntax<a class="headerlink" href="#syntax" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>INSERT VERTEX [IF NOT EXISTS] &lt;tag_name&gt; (&lt;prop_name_list&gt;) [, &lt;tag_name&gt; (&lt;prop_name_list&gt;), ...]
-     {VALUES | VALUE} VID: (&lt;prop_value_list&gt;[, &lt;prop_value_list&gt;])
+VALUES VID: (&lt;prop_value_list&gt;[, &lt;prop_value_list&gt;])
 
 prop_name_list:
   [prop_name [, prop_name] ...]
@@ -6082,7 +6082,7 @@ prop_value_list:
 <h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code># The following examples create tag t1 with no property and inserts vertex &quot;10&quot; with no property.
 nebula&gt; CREATE TAG IF NOT EXISTS t1();                   
-nebula&gt; INSERT VERTEX t1() VALUE &quot;10&quot;:(); 
+nebula&gt; INSERT VERTEX t1() VALUES &quot;10&quot;:(); 
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>nebula&gt; CREATE TAG IF NOT EXISTS t2 (name string, age int);                
 nebula&gt; INSERT VERTEX t2 (name, age) VALUES &quot;11&quot;:(&quot;n1&quot;, 12);
@@ -6104,12 +6104,12 @@ nebula&gt; INSERT VERTEX t3 (p1), t4(p2) VALUES &quot;21&quot;: (321, &quot;hell
 nebula&gt; INSERT VERTEX t2 (name, age) VALUES &quot;11&quot;:(&quot;n2&quot;, 13);
 nebula&gt; INSERT VERTEX t2 (name, age) VALUES &quot;11&quot;:(&quot;n3&quot;, 14);
 nebula&gt; INSERT VERTEX t2 (name, age) VALUES &quot;11&quot;:(&quot;n4&quot;, 15);
-nebula&gt; FETCH PROP ON t2 &quot;11&quot;;
-+---------------------------------+
-| vertices_                       |
-+---------------------------------+
-| (&quot;11&quot; :t2{age: 15, name: &quot;n4&quot;}) |
-+---------------------------------+
+nebula&gt; FETCH PROP ON t2 &quot;11&quot; YIELD properties(vertex);
++-----------------------+
+| properties(VERTEX)    |
++-----------------------+
+| {age: 15, name: &quot;n4&quot;} |
++-----------------------+
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>nebula&gt; CREATE TAG IF NOT EXISTS t5(p1 fixed_string(5) NOT NULL, p2 int, p3 int DEFAULT NULL);
 nebula&gt; INSERT VERTEX t5(p1, p2, p3) VALUES &quot;001&quot;:(&quot;Abe&quot;, 2, 3);
@@ -6120,33 +6120,33 @@ nebula&gt; INSERT VERTEX t5(p1, p2, p3) VALUES &quot;002&quot;:(NULL, 4, 5);
 
 # In the following example, the value of p3 is the default NULL.
 nebula&gt; INSERT VERTEX t5(p1, p2) VALUES &quot;003&quot;:(&quot;cd&quot;, 5);
-nebula&gt; FETCH PROP ON t5 &quot;003&quot;;
-+--------------------------------------------+
-| vertices_                                  |
-+--------------------------------------------+
-| (&quot;003&quot; :t5{p1: &quot;cd&quot;, p2: 5, p3: __NULL__}) |
-+--------------------------------------------+
+nebula&gt; FETCH PROP ON t5 &quot;003&quot; YIELD properties(vertex);
++---------------------------------+
+| properties(VERTEX)              |
++---------------------------------+
+| {p1: &quot;cd&quot;, p2: 5, p3: __NULL__} |
++---------------------------------+
 
 # In the following example, the allowed maximum length of p1 is 5.
 nebula&gt; INSERT VERTEX t5(p1, p2) VALUES &quot;004&quot;:(&quot;shalalalala&quot;, 4);
-nebula&gt; FETCH PROP on t5 &quot;004&quot;;
-+-----------------------------------------------+
-| vertices_                                     |
-+-----------------------------------------------+
-| (&quot;004&quot; :t5{p1: &quot;shala&quot;, p2: 4, p3: __NULL__}) |
-+-----------------------------------------------+
+nebula&gt; FETCH PROP on t5 &quot;004&quot; YIELD properties(vertex);
++------------------------------------+
+| properties(VERTEX)                 |
++------------------------------------+
+| {p1: &quot;shala&quot;, p2: 4, p3: __NULL__} |
++------------------------------------+
 </code></pre></div>
 <p>If you insert a vertex that already exists with <code>IF NOT EXISTS</code>, there will be no modification.</p>
 <div class="highlight"><pre><span></span><code># The following example inserts vertex &quot;1&quot;.
 nebula&gt; INSERT VERTEX t2 (name, age) VALUES &quot;1&quot;:(&quot;n2&quot;, 13);
 # Modify vertex &quot;1&quot; with IF NOT EXISTS. But there will be no modification as vertex &quot;1&quot; already exists.
 nebula&gt; INSERT VERTEX IF NOT EXISTS t2 (name, age) VALUES &quot;1&quot;:(&quot;n3&quot;, 14);
-nebula&gt; FETCH PROP ON t2 &quot;1&quot;;
-+--------------------------------+
-| vertices_                      |
-+--------------------------------+
-| (&quot;1&quot; :t2{age: 13, name: &quot;n2&quot;}) |
-+--------------------------------+
+nebula&gt; FETCH PROP ON t2 &quot;1&quot; YIELD properties(vertex);
++-----------------------+
+| properties(VERTEX)    |
++-----------------------+
+| {age: 13, name: &quot;n2&quot;} |
++-----------------------+
 </code></pre></div>
 
   <hr>
@@ -6154,7 +6154,7 @@ nebula&gt; FETCH PROP ON t2 &quot;1&quot;;
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 1, 2021</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 9, 2021</span>
       
     
   </small>
@@ -6246,10 +6246,10 @@ nebula&gt; FETCH PROP ON t2 &quot;1&quot;;
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.top"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.01824240.min.js", "version": {"method": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.top"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.cefbb252.min.js", "version": {"method": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.e0abf5b0.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.17f42bbf.min.js"></script>
       
         <script src="../../../js/version-select.js"></script>
       

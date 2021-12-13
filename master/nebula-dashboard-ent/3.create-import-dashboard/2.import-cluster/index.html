@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://docs.nebula-graph.io/master/nebula-dashboard-ent/3.create-import-dashboard/2.import-cluster/">
       
       <link rel="icon" href="../../../assets/images/favicon.ico">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.0.3">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.0">
     
     
       
@@ -23,7 +23,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.62128196.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.82f3c0b9.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.9204c3b2.min.css">
@@ -48,7 +48,7 @@
     
       <link rel="stylesheet" href="../../../stylesheets/extra.css">
     
-    <script>function __md_scope(e,t,_){return new URL(_||(t===localStorage?"../../..":"../../.."),location).pathname+"."+e}function __md_get(e,t=localStorage,_){return JSON.parse(t.getItem(__md_scope(e,t,_)))}function __md_set(e,t,_=localStorage,o){try{_.setItem(__md_scope(e,_,o),JSON.stringify(t))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -6022,13 +6022,16 @@
 <h2 id="steps">Steps<a class="headerlink" href="#steps" title="Permanent link">&para;</a></h2>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
-<ul>
-<li>In the same cluster, the service versions need to be unified. Importing Nebula Graph examples from different versions in the same cluster is not supported.</li>
-<li>The installation path of Nebula Graph needs to be the default installation path <code>/usr/local</code>.</li>
-</ul>
+<p>In the same cluster, the service versions need to be unified. Importing Nebula Graph examples from different versions in the same cluster is not supported.</p>
 </div>
 <ol>
-<li>In the <strong>Cluster management</strong> page, click <strong>Import cluster</strong>.</li>
+<li>
+<p>In the configuration files of each service, change the IP in <code>&lt;meta|graph|storage&gt;_server_addrs</code> and <code>local_ip</code> to the server's IP, and then start Nebula Graph.</p>
+<p>For details, see <a href="../../../5.configurations-and-logs/1.configurations/1.configurations/">Configurations</a> and <a href="../../../4.deployment-and-installation/manage-service/">Manage Nebula Graph services</a>.</p>
+</li>
+<li>
+<p>In the <strong>Cluster management</strong> page, click <strong>Import cluster</strong>.</p>
+</li>
 <li>
 <p>In the <strong>Import cluster</strong> page, enter the information of <strong>Connect to Nebula Graph</strong>.</p>
 <ul>
@@ -6048,10 +6051,16 @@
 <ul>
 <li>Enter the cluster name, 15 characters at most. In this example, the cluster name is <code>create_1027</code>.</li>
 <li><strong>Authorize</strong> the node. The SSH username and password of each node are required.</li>
-<li><strong>Batch authorization</strong> requires uploading the CSV file. Edit the authentication information of each node according to the downloaded CSV file. Ensure that the node information is correct, otherwise upload failure may happen.
- <img alt="Batch authentication" src="../../figs/ds-026.png" /></li>
-<li>If the node status on the page becomes <strong>authorized</strong>, the node authentication is successful.
- <img alt="Authorize" src="../../figs/ds-027.png" /></li>
+<li>
+<p><strong>Batch authorization</strong> requires uploading the CSV file. Edit the authentication information of each node according to the downloaded CSV file. Ensure that the node information is correct, otherwise upload failure may happen.</p>
+<p><img alt="Batch authentication" src="../../figs/ds-026.png" /></p>
+</li>
+</ul>
+<ul>
+<li>
+<p>If the node status on the page becomes <strong>authorized</strong>, the node authentication is successful.</p>
+<p><img alt="Authorize" src="../../figs/ds-027.png" /></p>
+</li>
 </ul>
 </li>
 <li>
@@ -6066,7 +6075,7 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 1, 2021</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 8, 2021</span>
       
     
   </small>
@@ -6158,10 +6167,10 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.top"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.01824240.min.js", "version": {"method": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.top"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.cefbb252.min.js", "version": {"method": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.e0abf5b0.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.17f42bbf.min.js"></script>
       
         <script src="../../../js/version-select.js"></script>
       
